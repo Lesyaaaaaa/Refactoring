@@ -1,0 +1,196 @@
+@import "tailwindcss";
+:root {
+  --bg-dark: #0a0e18;
+  --bg-card: #141b2d;
+  --text-light: #e5ebf8;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-strong: #2563eb;
+  --accent-glow: rgba(59,130,246,0.35);
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  width: 100vw;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #0f172a, var(--bg-dark));
+  display: flex;
+  flex-direction: column;
+}
+
+/* Центрирование контента и плавный скролл */
+.container-fluid {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+}
+
+/* Чтобы контент не упирался в края на широких мониторах */
+@media (min-width: 1600px) {
+  .container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+
+body {
+  background: radial-gradient(circle at 20% 20%, #0f172a, var(--bg-dark));
+  color: var(--text-light);
+  font-family: "Poppins", system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar-dark {
+  background: transparent !important;
+}
+.navbar-brand {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.navbar-nav .nav-link {
+  color: var(--text-light);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.navbar-nav .nav-link:hover {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* КАРТОЧКИ */
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(59,130,246,0.15);
+  border-radius: 14px;
+  transition: transform 0.25s, box-shadow 0.25s;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px var(--accent-glow);
+}
+.card img {
+  height: 280px;
+  object-fit: cover;
+}
+.card-title {
+  color: var(--accent);
+  font-weight: 700;
+}
+.card-text {
+  color: var(--text-muted);
+}
+
+/* КНОПКИ */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  border: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px var(--accent-glow);
+}
+
+/* INPUT / FORM */
+.form-control {
+  background: #0f172a;
+  color: var(--text-light);
+  border: 1px solid rgba(59,130,246,0.3);
+  border-radius: 8px;
+}
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: #101a30;
+  color: white;
+}
+
+/* МЕЛОЧИ */
+.text-muted {
+  color: var(--text-muted) !important;
+}
+.section-title {
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
