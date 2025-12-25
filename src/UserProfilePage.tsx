@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import * as userApi from "./api/user";
+import { addFilmReview } from "./api/reviews";
 
 interface Props {
   token: string;
@@ -131,11 +132,7 @@ export default function UserProfilePage({ token }: Props) {
     if (!review || !review.rating || !review.text) return alert("Заполните рейтинг и текст отзыва");
 
     try {
-      await axios.post(
-        `http://91.142.94.183:8080/films/${filmId}/reviews`,
-        { rating: review.rating, text: review.text },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      await addFilmReview(filmId, review, token);
       alert("Отзыв отправлен!"); setReviewForms((prev) => ({ ...prev, [filmId]: { rating: 0, text: "" } }));
     } catch (err) {
       console.error("Ошибка отправки отзыва:", err);
