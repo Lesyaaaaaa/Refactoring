@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import * as movieApi from "./api/movie";
 import ReviewsDisplay from "./ReviewsDisplay";
+import { reserveTicket } from "./api/tickets";
 
 interface Props {
   movie: movieApi.Film; onBack: () => void;
@@ -107,11 +108,7 @@ const MovieDetailsPage: React.FC<Props> = ({ movie, onBack }) => {
         const ticket = tickets.find((t) => t.seatId === seatId);
         if (!ticket) continue;
 
-        await axios.post(
-          `http://91.142.94.183:8080/tickets/${ticket.id}/reserve`,
-          {},
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        await reserveTicket(ticket.id, token);
       }
       alert("Места успешно забронированы!");
       const reservedTickets = tickets

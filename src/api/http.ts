@@ -1,11 +1,12 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "http://91.142.94.183:8080", 
-  withCredentials: true, 
-  headers: {
-    "Content-Type": "application/json",
-  },
+const API_BASE_URL = "http://91.142.94.183:8080";
+
+export const apiClient = axios.create({
+  baseURL: API_BASE_URL
 });
 
-export default api;
+export const authHeaders = (token: string | null) =>
+  token
+    ? { Authorization: `Bearer ${token}` }
+    : {};
