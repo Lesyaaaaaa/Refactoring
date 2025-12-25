@@ -14,7 +14,6 @@ export default function CategoriesManagement({ token }: CategoriesManagementProp
   const [categories, setCategories] = useState<Category[]>([]);
   const [editing, setEditing] = useState<Category | null>(null);
 
-  // Загрузка категорий
   const fetchCategories = async () => {
     if (!token) return;
     try {
@@ -32,7 +31,6 @@ export default function CategoriesManagement({ token }: CategoriesManagementProp
     fetchCategories();
   }, [token]);
 
-  // Создание / редактирование категории
   const handleSave = async (cat: Category) => {
     if (!token) return;
     if (!cat.name.trim()) return alert("Введите название категории");
@@ -161,7 +159,7 @@ function CategoryForm({ category, onSave, onCancel }: CategoryFormProps) {
         name="priceCents"
         type="number"
         placeholder="Цена (₽)"
-        value={form.priceCents }
+        value={form.priceCents}
         onChange={handleChange}
       />
 
