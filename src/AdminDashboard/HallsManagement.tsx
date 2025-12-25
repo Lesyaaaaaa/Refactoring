@@ -34,7 +34,6 @@ export default function HallsManagement({ token }: HallsManagementProps) {
   const [editing, setEditing] = useState<Hall | null>(null);
   const [categories, setCategories] = useState<SeatCategory[]>([]);
 
-  // ✅ Загрузка залов
   const fetchHalls = async () => {
     if (!token) return;
     try {
@@ -52,7 +51,6 @@ export default function HallsManagement({ token }: HallsManagementProps) {
     }
   };
 
-  // ✅ Загрузка категорий мест
   const fetchCategories = async () => {
     if (!token) return;
     try {
@@ -72,7 +70,6 @@ export default function HallsManagement({ token }: HallsManagementProps) {
     fetchCategories();
   }, [token]);
 
-  // ✅ Сохранение зала
   const handleSave = async (hall: Hall) => {
     if (!token) return;
     try {
@@ -81,7 +78,6 @@ export default function HallsManagement({ token }: HallsManagementProps) {
         ? `http://91.142.94.183:8080/halls/${hall.id}`
         : "http://91.142.94.183:8080/halls";
 
-      // 🔹 Генерируем плоский массив мест
       const seats: Seat[] = [];
       hall.rows.forEach((row, i) => {
         for (let j = 0; j < row.seatsCount; j++) {
@@ -118,7 +114,6 @@ export default function HallsManagement({ token }: HallsManagementProps) {
     }
   };
 
-  // ✅ Удаление зала
   const handleDelete = async (id: string) => {
     if (!token || !window.confirm("Удалить этот зал?")) return;
     try {

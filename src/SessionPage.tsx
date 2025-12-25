@@ -35,8 +35,8 @@ const SessionPage: React.FC<Props> = ({ sessionId, onBack }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const session = await getSessionById(sessionId);
-        const planData = await getHallPlan(session.hallId);
+        const movieSession = await getSessionById(sessionId);
+        const planData = await getHallPlan(movieSession.hallId);
         setPlan(planData);
       } catch (err) {
         console.error("Ошибка загрузки данных:", err);
@@ -113,10 +113,10 @@ const SessionPage: React.FC<Props> = ({ sessionId, onBack }) => {
                   const color = isTaken
                     ? "btn-secondary"
                     : isSelected
-                    ? "btn-success"
-                    : category?.name?.toLowerCase().includes("vip")
-                    ? "btn-primary"
-                    : "btn-outline-light";
+                      ? "btn-success"
+                      : category?.name?.toLowerCase().includes("vip")
+                        ? "btn-primary"
+                        : "btn-outline-light";
 
                   return (
                     <button
@@ -125,9 +125,8 @@ const SessionPage: React.FC<Props> = ({ sessionId, onBack }) => {
                       style={{ width: "50px", height: "50px" }}
                       disabled={isTaken}
                       onClick={() => handleSeatClick(seat.id)}
-                      title={`${category?.name || "Место"} — ${
-                        category ? category.priceCents / 100 : 0
-                      } ₽`}
+                      title={`${category?.name || "Место"} — ${category ? category.priceCents / 100 : 0
+                        } ₽`}
                     >
                       {seat.number}
                     </button>
